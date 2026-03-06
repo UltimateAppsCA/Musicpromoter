@@ -2,38 +2,1033 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="theme-color" content="#0a0a0a">
-    <title>RESONANCE | Music Promotion Agency</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>UltimateAppsCA Studios | Emerging Artists Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Space Grotesk', 'sans-serif'],
-                        display: ['Syne', 'sans-serif'],
+                        display: ['Orbitron', 'sans-serif'],
+                        body: ['Rajdhani', 'sans-serif'],
                     },
                     colors: {
-                        neon: '#ccff00',
-                        dark: '#0a0a0a',
-                        'dark-lighter': '#141414',
+                        neon: {
+                            purple: '#b026ff',
+                            pink: '#ff006e',
+                            cyan: '#00f5ff',
+                            yellow: '#ffea00',
+                            lime: '#ccff00',
+                        },
+                        dark: '#050508',
+                        surface: '#0a0a12',
                     },
-                    screens: {
-                        'xs': '475px',
+                    animation: {
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'float': 'float 3s ease-in-out infinite',
+                        'shake': 'shake 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'bounce-in': 'bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+                        'spin-slow': 'spin 3s linear infinite',
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px #b026ff, 0 0 10px #b026ff, 0 0 15px #b026ff' },
+                            '100%': { boxShadow: '0 0 20px #ff006e, 0 0 30px #ff006e, 0 0 40px #ff006e' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-20px) rotate(5deg)' },
+                        },
+                        shake: {
+                            '0%, 100%': { transform: 'translateX(0)' },
+                            '25%': { transform: 'translateX(-10px)' },
+                            '75%': { transform: 'translateX(10px)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(100px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        bounceIn: {
+                            '0%': { transform: 'scale(0.3)', opacity: '0' },
+                            '50%': { transform: 'scale(1.05)' },
+                            '70%': { transform: 'scale(0.9)' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
                     }
                 }
             }
         }
     </script>
-    
     <style>
         * {
             -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        body {
+            background-color: #050508;
+            color: #ffffff;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050508;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #b026ff, #ff006e);
+            border-radius: 2px;
+        }
+        
+        /* Neon Glow Effects */
+        .neon-text {
+            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor;
+        }
+        
+        .neon-border {
+            box-shadow: 0 0 10px rgba(176, 38, 255, 0.5), inset 0 0 10px rgba(176, 38, 255, 0.2);
+        }
+        
+        .neon-box {
+            background: rgba(10, 10, 18, 0.8);
+            border: 1px solid rgba(176, 38, 255, 0.3);
+            box-shadow: 0 0 20px rgba(176, 38, 255, 0.2);
+        }
+        
+        /* Glassmorphism Enhanced */
+        .glass-neon {
+            background: rgba(10, 10, 18, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(176, 38, 255, 0.3);
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(45deg, #b026ff, #ff006e, #00f5ff, #ffea00);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Audio Visualizer */
+        .visualizer-bar {
+            width: 4px;
+            background: linear-gradient(to top, #b026ff, #ff006e, #00f5ff);
+            border-radius: 2px;
+            animation: visualizer 0.8s ease-in-out infinite;
+        }
+        
+        @keyframes visualizer {
+            0%, 100% { height: 5px; }
+            50% { height: 40px; }
+        }
+        
+        .visualizer-bar:nth-child(1) { animation-delay: 0.1s; }
+        .visualizer-bar:nth-child(2) { animation-delay: 0.15s; }
+        .visualizer-bar:nth-child(3) { animation-delay: 0.2s; }
+        .visualizer-bar:nth-child(4) { animation-delay: 0.25s; }
+        .visualizer-bar:nth-child(5) { animation-delay: 0.3s; }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .mobile-full {
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+            }
+            .touch-target {
+                min-height: 48px;
+                min-width: 48px;
+            }
+            .text-responsive {
+                font-size: clamp(2rem, 8vw, 4rem);
+            }
+        }
+        
+        /* Sticker/Tag Styles */
+        .hot-tag {
+            background: linear-gradient(135deg, #ff006e, #ffea00);
+            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+            100% { filter: brightness(1); }
+        }
+        
+        /* Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #00f5ff;
+            cursor: pointer;
+            box-shadow: 0 0 10px #00f5ff;
+            margin-top: -8px;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: linear-gradient(90deg, #b026ff, #ff006e);
+            border-radius: 2px;
+        }
+        
+        /* Checkbox Animation */
+        .neon-checkbox:checked + div {
+            background: linear-gradient(135deg, #b026ff, #ff006e);
+            border-color: #00f5ff;
+            box-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
+        }
+        
+        /* Card Hover Effects */
+        .flash-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .flash-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+            opacity: 0;
+        }
+        .flash-card:hover::before {
+            animation: shine 0.5s ease-in-out;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+        
+        /* Floating Elements */
+        .floater {
+            animation: float 6s ease-in-out infinite;
+        }
+        .floater:nth-child(2n) { animation-delay: 1s; }
+        .floater:nth-child(3n) { animation-delay: 2s; }
+        
+        /* Marquee */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        
+        /* Mobile Bottom Nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(5, 5, 8, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(176, 38, 255, 0.3);
+            z-index: 50;
+            padding: 12px 0;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .bottom-nav {
+                display: flex;
+            }
+            body {
+                padding-bottom: 80px;
+            }
+        }
+        
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+        }
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff006e;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #00f5ff;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(30px, 9999px, 15px, 0); }
+            20% { clip: rect(85px, 9999px, 95px, 0); }
+            40% { clip: rect(10px, 9999px, 65px, 0); }
+            60% { clip: rect(75px, 9999px, 25px, 0); }
+            80% { clip: rect(55px, 9999px, 85px, 0); }
+            100% { clip: rect(40px, 9999px, 60px, 0); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(65px, 9999px, 99px, 0); }
+            20% { clip: rect(25px, 9999px, 50px, 0); }
+            40% { clip: rect(90px, 9999px, 75px, 0); }
+            60% { clip: rect(15px, 9999px, 35px, 0); }
+            80% { clip: rect(50px, 9999px, 20px, 0); }
+            100% { clip: rect(80px, 9999px, 45px, 0); }
+        }
+    </style>
+</head>
+<body class="antialiased bg-dark">
+
+    <!-- Animated Background Grid -->
+    <div class="fixed inset-0 z-0 opacity-20 pointer-events-none">
+        <div class="absolute inset-0" style="background-image: linear-gradient(rgba(176, 38, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 245, 255, 0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+    </div>
+
+    <!-- Floating Orbs -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-20 left-10 w-64 h-64 bg-neon-purple/30 rounded-full blur-3xl floater"></div>
+        <div class="absolute bottom-40 right-10 w-96 h-96 bg-neon-pink/20 rounded-full blur-3xl floater"></div>
+        <div class="absolute top-1/2 left-1/2 w-80 h-80 bg-neon-cyan/20 rounded-full blur-3xl floater"></div>
+    </div>
+
+    <!-- Top Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-neon border-b border-neon-cyan/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <div class="flex items-center gap-2 group cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gradient-to-br from-neon-purple to-neon-pink flex items-center justify-center transform group-hover:rotate-12 transition-transform shadow-lg shadow-neon-purple/50">
+                        <svg class="w-6 h-6 md:w-7 md:h-7 text-white animate-pulse-fast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+                        </svg>
+                    </div>
+                    <div class="hidden sm:block">
+                        <span class="font-display font-bold text-lg md:text-xl tracking-wider text-white">
+                            ULTIMATE<span class="text-neon-cyan">APPS</span>CA
+                        </span>
+                        <div class="text-[10px] text-neon-pink tracking-[0.3em] uppercase">Studios</div>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#chart" class="text-sm font-bold tracking-wider hover:text-neon-cyan transition-colors uppercase">Top 30</a>
+                    <a href="#player" class="text-sm font-bold tracking-wider hover:text-neon-cyan transition-colors uppercase">Listen</a>
+                    <a href="#submit" class="px-6 py-2 rounded-full bg-gradient-to-r from-neon-purple to-neon-pink text-white font-bold text-sm tracking-wider hover:shadow-lg hover:shadow-neon-purple/50 transition-all transform hover:scale-110 animate-glow uppercase">
+                        Submit Now
+                    </a>
+                </div>
+                
+                <button class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-white/10" onclick="toggleMenu()">
+                    <svg class="w-6 h-6 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden glass-neon border-t border-neon-cyan/30">
+            <div class="px-4 py-6 space-y-4">
+                <a href="#chart" class="block py-3 text-center text-lg font-bold text-neon-cyan border-b border-white/10" onclick="toggleMenu()">TOP 30</a>
+                <a href="#player" class="block py-3 text-center text-lg font-bold text-neon-pink border-b border-white/10" onclick="toggleMenu()">LISTEN</a>
+                <a href="#submit" class="block py-3 text-center text-lg font-bold text-neon-purple" onclick="toggleMenu()">SUBMIT MUSIC</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neon-purple/20 via-transparent to-transparent"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-neon mb-6 md:mb-8 animate-bounce-slow">
+                <span class="flex h-3 w-3 rounded-full bg-neon-lime animate-pulse-fast shadow-[0_0_10px_#ccff00]"></span>
+                <span class="text-xs md:text-sm font-bold tracking-widest text-neon-cyan uppercase">Live Now • Accepting Submissions</span>
+            </div>
+            
+            <h1 class="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black mb-4 md:mb-6 leading-none tracking-tighter glitch" data-text="DISCOVER">
+                <span class="gradient-text">DISCOVER</span>
+            </h1>
+            <h2 class="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6 md:mb-8 leading-none tracking-tighter text-white">
+                THE <span class="text-neon-pink neon-text">NEXT</span><br class="md:hidden"> <span class="text-neon-cyan neon-text">WAVE</span>
+            </h2>
+            
+            <p class="max-w-2xl mx-auto text-base md:text-xl lg:text-2xl text-gray-300 mb-8 md:mb-12 font-medium leading-relaxed px-4">
+                Join the <span class="text-neon-purple font-bold">#1</span> platform for emerging artists. 
+                Get featured. Get heard. Get big.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
+                <a href="#chart" class="w-full sm:w-auto px-8 py-4 md:py-5 rounded-full bg-gradient-to-r from-neon-purple via-neon-pink to-neon-yellow text-white font-bold text-lg md:text-xl tracking-wider hover:shadow-[0_0_30px_rgba(176,38,255,0.6)] transition-all transform hover:scale-105 flex items-center justify-center gap-2 animate-glow">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    EXPLORE CHART
+                </a>
+                <a href="#submit" class="w-full sm:w-auto px-8 py-4 md:py-5 rounded-full glass-neon text-white font-bold text-lg md:text-xl tracking-wider hover:bg-white/10 transition-all flex items-center justify-center gap-2 border border-neon-cyan/50">
+                    <svg class="w-6 h-6 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                    </svg>
+                    SUBMIT TRACK
+                </a>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 max-w-4xl mx-auto px-2">
+                <div class="glass-neon rounded-2xl p-4 md:p-6 flash-card border border-neon-purple/30">
+                    <div class="text-3xl md:text-5xl font-black text-neon-purple neon-text mb-1">30</div>
+                    <div class="text-xs md:text-sm font-bold tracking-wider text-gray-400 uppercase">Top Artists</div>
+                </div>
+                <div class="glass-neon rounded-2xl p-4 md:p-6 flash-card border border-neon-pink/30">
+                    <div class="text-3xl md:text-5xl font-black text-neon-pink neon-text mb-1">50K+</div>
+                    <div class="text-xs md:text-sm font-bold tracking-wider text-gray-400 uppercase">Listeners</div>
+                </div>
+                <div class="glass-neon rounded-2xl p-4 md:p-6 flash-card border border-neon-cyan/30">
+                    <div class="text-3xl md:text-5xl font-black text-neon-cyan neon-text mb-1">24H</div>
+                    <div class="text-xs md:text-sm font-bold tracking-wider text-gray-400 uppercase">Review</div>
+                </div>
+                <div class="glass-neon rounded-2xl p-4 md:p-6 flash-card border border-neon-yellow/30">
+                    <div class="text-3xl md:text-5xl font-black text-neon-yellow neon-text mb-1">100%</div>
+                    <div class="text-xs md:text-sm font-bold tracking-wider text-gray-400 uppercase">Support</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 rounded-full border-2 border-neon-cyan flex items-start justify-center p-2">
+                <div class="w-1 h-3 bg-neon-cyan rounded-full animate-pulse-fast"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee Banner -->
+    <div class="py-4 bg-gradient-to-r from-neon-purple via-neon-pink to-neon-cyan overflow-hidden">
+        <div class="marquee-container">
+            <div class="marquee-content font-display font-bold text-lg md:text-2xl text-white tracking-widest">
+                🔥 NOW PLAYING TOP 30 🔥 SUBMIT YOUR MUSIC TODAY 🔥 ULTIMATEAPPSCA STUDIOS 🔥 DISCOVER NEW ARTISTS 🔥 NOW PLAYING TOP 30 🔥 SUBMIT YOUR MUSIC TODAY 🔥 ULTIMATEAPPSCA STUDIOS 🔥 DISCOVER NEW ARTISTS 🔥
+            </div>
+        </div>
+    </div>
+
+    <!-- Top 30 Chart Section -->
+    <section id="chart" class="relative py-16 md:py-24 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 md:mb-12">
+                <div class="inline-block px-4 py-1 rounded-full bg-neon-pink/20 border border-neon-pink/50 text-neon-pink text-xs font-bold tracking-widest uppercase mb-4">
+                    Live Chart
+                </div>
+                <h2 class="font-display text-4xl md:text-6xl lg:text-7xl font-black mb-4 text-white">
+                    TOP <span class="text-neon-cyan neon-text">30</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base px-4">
+                    Updated in real-time. Click any track to play instantly.
+                </p>
+            </div>
+            
+            <!-- Filter Tabs -->
+            <div class="flex justify-center gap-2 md:gap-4 mb-6 md:mb-8 overflow-x-auto px-4 pb-2">
+                <button class="px-4 md:px-6 py-2 rounded-full bg-neon-purple text-white font-bold text-xs md:text-sm tracking-wider whitespace-nowrap shadow-[0_0_15px_rgba(176,38,255,0.5)]">ALL GENRES</button>
+                <button class="px-4 md:px-6 py-2 rounded-full glass-neon text-gray-400 font-bold text-xs md:text-sm tracking-wider whitespace-nowrap hover:text-white transition-colors">HIP HOP</button>
+                <button class="px-4 md:px-6 py-2 rounded-full glass-neon text-gray-400 font-bold text-xs md:text-sm tracking-wider whitespace-nowrap hover:text-white transition-colors">ELECTRONIC</button>
+                <button class="px-4 md:px-6 py-2 rounded-full glass-neon text-gray-400 font-bold text-xs md:text-sm tracking-wider whitespace-nowrap hover:text-white transition-colors">POP</button>
+            </div>
+            
+            <div class="grid gap-3 md:gap-4" id="chartList">
+                <!-- Chart items injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio Player Section -->
+    <section id="player" class="relative py-16 md:py-24 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-neon-purple/10 via-neon-pink/10 to-neon-cyan/10"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="glass-neon rounded-3xl p-4 md:p-8 lg:p-12 border border-neon-cyan/30 shadow-[0_0_50px_rgba(176,38,255,0.2)]">
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-center">
+                    <!-- Album Art -->
+                    <div class="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 flex-shrink-0 group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-neon-purple to-neon-pink rounded-2xl rotate-6 opacity-60 blur-xl group-hover:rotate-12 transition-transform duration-500"></div>
+                        <div class="absolute inset-0 bg-gradient-to-br from-neon-cyan to-neon-yellow rounded-2xl -rotate-3 opacity-40 blur-lg group-hover:-rotate-6 transition-transform duration-500"></div>
+                        <img id="playerArt" src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400&h=400&fit=crop" 
+                             alt="Album Art" 
+                             class="relative w-full h-full object-cover rounded-2xl shadow-2xl border-2 border-white/20">
+                        
+                        <!-- Playing Overlay -->
+                        <div id="visualizer" class="absolute inset-0 flex items-center justify-center bg-black/60 rounded-2xl opacity-0 transition-opacity backdrop-blur-sm">
+                            <div class="flex gap-1 h-16 items-end">
+                                <div class="visualizer-bar"></div>
+                                <div class="visualizer-bar"></div>
+                                <div class="visualizer-bar"></div>
+                                <div class="visualizer-bar"></div>
+                                <div class="visualizer-bar"></div>
+                                <div class="visualizer-bar"></div>
+                                <div class="visualizer-bar"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Rank Badge -->
+                        <div id="rankBadge" class="absolute -top-3 -right-3 w-12 h-12 rounded-full bg-gradient-to-br from-neon-yellow to-neon-pink flex items-center justify-center font-display font-bold text-lg shadow-lg transform rotate-12">
+                            #<span id="currentRank">1</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Controls -->
+                    <div class="flex-1 w-full text-center md:text-left">
+                        <div class="mb-4 md:mb-6">
+                            <div class="inline-block px-3 py-1 rounded-full bg-neon-cyan/20 text-neon-cyan text-xs font-bold tracking-wider uppercase mb-2">Now Playing</div>
+                            <h3 id="trackTitle" class="font-display text-2xl md:text-4xl lg:text-5xl font-black mb-2 text-white leading-tight">Select a Track</h3>
+                            <p id="trackArtist" class="text-neon-pink text-lg md:text-xl lg:text-2xl font-bold tracking-wide">From Top 30</p>
+                        </div>
+                        
+                        <!-- Progress -->
+                        <div class="mb-6 md:mb-8 px-2">
+                            <div class="flex justify-between text-xs md:text-sm font-bold text-gray-400 mb-2 tracking-wider">
+                                <span id="currentTime" class="text-neon-cyan">0:00</span>
+                                <span id="duration" class="text-neon-pink">0:00</span>
+                            </div>
+                            <div class="relative h-2 bg-white/10 rounded-full overflow-hidden cursor-pointer touch-target" id="progressBar">
+                                <div id="progressFill" class="absolute inset-y-0 left-0 bg-gradient-to-r from-neon-purple via-neon-pink to-neon-cyan w-0 transition-all duration-100 shadow-[0_0_10px_rgba(176,38,255,0.8)]"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Control Buttons -->
+                        <div class="flex items-center justify-center md:justify-start gap-4 md:gap-6 mb-6 md:mb-8">
+                            <button onclick="previousTrack()" class="w-12 h-12 md:w-14 md:h-14 rounded-full glass-neon flex items-center justify-center hover:bg-neon-purple/30 transition-all active:scale-95 touch-target">
+                                <svg class="w-6 h-6 md:w-7 md:h-7 text-neon-cyan" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                                </svg>
+                            </button>
+                            
+                            <button onclick="togglePlay()" id="playBtn" class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-r from-neon-purple via-neon-pink to-neon-cyan flex items-center justify-center hover:scale-110 transition-transform shadow-[0_0_30px_rgba(176,38,255,0.6)] animate-glow touch-target">
+                                <svg id="playIcon" class="w-8 h-8 md:w-10 md:h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                <svg id="pauseIcon" class="w-8 h-8 md:w-10 md:h-10 text-white hidden" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                                </svg>
+                            </button>
+                            
+                            <button onclick="nextTrack()" class="w-12 h-12 md:w-14 md:h-14 rounded-full glass-neon flex items-center justify-center hover:bg-neon-purple/30 transition-all active:scale-95 touch-target">
+                                <svg class="w-6 h-6 md:w-7 md:h-7 text-neon-cyan" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Volume -->
+                        <div class="flex items-center gap-3 md:gap-4 px-2 max-w-md mx-auto md:mx-0">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+                            </svg>
+                            <input type="range" min="0" max="100" value="80" class="flex-1 h-2 bg-white/20 rounded-lg appearance-none cursor-pointer touch-target" oninput="setVolume(this.value)">
+                        </div>
+                    </div>
+                </div>
+                
+                <audio id="audioPlayer" preload="metadata"></audio>
+            </div>
+        </div>
+    </section>
+
+    <!-- Submission Form Section -->
+    <section id="submit" class="relative py-16 md:py-24 bg-surface">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 md:mb-12">
+                <div class="inline-block px-4 py-1 rounded-full bg-neon-lime/20 border border-neon-lime/50 text-neon-lime text-xs font-bold tracking-widest uppercase mb-4 animate-pulse-fast">
+                    Open Submissions
+                </div>
+                <h2 class="font-display text-4xl md:text-6xl lg:text-7xl font-black mb-4 text-white">
+                    SUBMIT <span class="text-neon-pink neon-text">MUSIC</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base px-4">
+                    Get featured on our Top 30 chart. 24-hour review guarantee.
+                </p>
+            </div>
+            
+            <div class="glass-neon rounded-3xl p-6 md:p-10 lg:p-12 border border-neon-purple/30 shadow-[0_0_50px_rgba(176,38,255,0.15)]">
+                <form id="submissionForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4 md:space-y-6" onsubmit="return validateForm(event)">
+                    
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold tracking-wider text-neon-cyan uppercase">Artist Name *</label>
+                            <input type="text" name="artist_name" required 
+                                   class="w-full px-4 py-3 md:py-4 rounded-xl bg-dark border-2 border-white/10 text-white placeholder-gray-600 focus:border-neon-purple focus:shadow-[0_0_15px_rgba(176,38,255,0.3)] outline-none transition-all font-bold tracking-wide"
+                                   placeholder="YOUR NAME">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold tracking-wider text-neon-cyan uppercase">Email *</label>
+                            <input type="email" name="email" required 
+                                   class="w-full px-4 py-3 md:py-4 rounded-xl bg-dark border-2 border-white/10 text-white placeholder-gray-600 focus:border-neon-purple focus:shadow-[0_0_15px_rgba(176,38,255,0.3)] outline-none transition-all font-bold tracking-wide"
+                                   placeholder="EMAIL@DOMAIN.COM">
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="block text-xs md:text-sm font-bold tracking-wider text-neon-cyan uppercase">Track Title *</label>
+                        <input type="text" name="track_title" required 
+                               class="w-full px-4 py-3 md:py-4 rounded-xl bg-dark border-2 border-white/10 text-white placeholder-gray-600 focus:border-neon-purple focus:shadow-[0_0_15px_rgba(176,38,255,0.3)] outline-none transition-all font-bold tracking-wide"
+                               placeholder="SONG TITLE">
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="block text-xs md:text-sm font-bold tracking-wider text-neon-cyan uppercase">Music URL *</label>
+                        <input type="url" name="track_url" required 
+                               class="w-full px-4 py-3 md:py-4 rounded-xl bg-dark border-2 border-white/10 text-white placeholder-gray-600 focus:border-neon-purple focus:shadow-[0_0_15px_rgba(176,38,255,0.3)] outline-none transition-all font-bold tracking-wide"
+                               placeholder="https://soundcloud.com/...">
+                        <p class="text-xs text-gray-500 mt-1">SoundCloud, Spotify, YouTube, or direct MP3 link</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold tracking-wider text-neon-cyan uppercase">Genre</label>
+                            <select name="genre" 
+                                    class="w-full px-4 py-3 md:py-4 rounded-xl bg-dark border-2 border-white/10 text-white focus:border-neon-purple focus:shadow-[0_0_15px_rgba(176,38,255,0.3)] outline-none transition-all font-bold tracking-wide appearance-none cursor-pointer">
+                                <option value="">SELECT GENRE</option>
+                                <option value="hip-hop">HIP HOP / RAP</option>
+                                <option value="electronic">ELECTRONIC / EDM</option>
+                                <option value="pop">POP</option>
+                                <option value="rock">ROCK / ALT</option>
+                                <option value="rnb">R&B / SOUL</option>
+                                <option value="other">OTHER</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold tracking-wider text-neon-cyan uppercase">Instagram / Social</label>
+                            <input type="text" name="social" 
+                                   class="w-full px-4 py-3 md:py-4 rounded-xl bg-dark border-2 border-white/10 text-white placeholder-gray-600 focus:border-neon-purple focus:shadow-[0_0_15px_rgba(176,38,255,0.3)] outline-none transition-all font-bold tracking-wide"
+                                   placeholder="@HANDLE">
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="block text-xs md:text-sm font-bold tracking-wider text-neon-cyan uppercase">Message</label>
+                        <textarea name="message" rows="3" 
+                                  class="w-full px-4 py-3 md:py-4 rounded-xl bg-dark border-2 border-white/10 text-white placeholder-gray-600 focus:border-neon-purple focus:shadow-[0_0_15px_rgba(176,38,255,0.3)] outline-none transition-all font-bold tracking-wide resize-none"
+                                  placeholder="TELL US ABOUT YOUR MUSIC..."></textarea>
+                    </div>
+                    
+                    <!-- Terms Checkbox -->
+                    <div class="pt-4 border-t border-white/10">
+                        <label class="flex items-start gap-3 cursor-pointer group">
+                            <input type="checkbox" name="terms" required class="neon-checkbox hidden">
+                            <div class="w-6 h-6 rounded-lg border-2 border-neon-purple/50 flex items-center justify-center mt-0.5 transition-all group-hover:border-neon-cyan flex-shrink-0">
+                                <svg class="w-4 h-4 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <div class="text-xs md:text-sm text-gray-400 leading-relaxed">
+                                <span class="text-neon-pink font-bold">IMPORTANT:</span> I confirm I am the rightful owner of this music. By submitting, I agree to a <span class="text-neon-cyan font-bold">50/50 co-ownership</span> with UltimateAppsCA Studios, granting rights to create copies, distribute, and sell for profit. 
+                                <button type="button" onclick="openTermsModal()" class="text-neon-purple hover:text-neon-cyan underline font-bold ml-1">Read Full Legal Terms</button>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full py-4 md:py-5 rounded-xl bg-gradient-to-r from-neon-purple via-neon-pink to-neon-cyan text-white font-bold text-lg md:text-xl tracking-wider hover:shadow-[0_0_30px_rgba(176,38,255,0.6)] transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 animate-glow touch-target">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        SUBMIT FOR REVIEW
+                    </button>
+                    
+                    <div class="flex items-center justify-center gap-2 text-xs text-gray-500">
+                        <svg class="w-4 h-4 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                        <span>Secure Formspree Encryption</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark border-t border-neon-purple/30 py-8 md:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-neon-purple to-neon-pink flex items-center justify-center shadow-[0_0_20px_rgba(176,38,255,0.5)]">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+                        </svg>
+                    </div>
+                    <div class="text-center">
+                        <div class="font-display font-bold text-xl text-white tracking-wider">ULTIMATEAPPSCA</div>
+                        <div class="text-neon-pink text-xs tracking-[0.3em] uppercase">Studios</div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-6 text-xs md:text-sm font-bold tracking-wider">
+                    <a href="#" onclick="openTermsModal(); return false;" class="text-gray-400 hover:text-neon-cyan transition-colors uppercase">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-neon-cyan transition-colors uppercase">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-neon-cyan transition-colors uppercase">Contact</a>
+                </div>
+                
+                <div class="text-xs text-gray-600 font-bold tracking-wider">
+                    © 2026 ULTIMATEAPPSCA STUDIOS. ALL RIGHTS RESERVED.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="bottom-nav md:hidden">
+        <div class="flex justify-around items-center px-4">
+            <a href="#chart" class="flex flex-col items-center gap-1 text-neon-cyan">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+                </svg>
+                <span class="text-[10px] font-bold tracking-wider">CHART</span>
+            </a>
+            <a href="#player" class="flex flex-col items-center gap-1 text-gray-400 hover:text-neon-pink transition-colors">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-r from-neon-purple to-neon-pink flex items-center justify-center -mt-8 shadow-[0_0_20px_rgba(176,38,255,0.5)] border-4 border-dark">
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </div>
+            </a>
+            <a href="#submit" class="flex flex-col items-center gap-1 text-gray-400 hover:text-neon-purple transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                </svg>
+                <span class="text-[10px] font-bold tracking-wider">SUBMIT</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Terms Modal -->
+    <div id="termsModal" class="fixed inset-0 z-[100] hidden overflow-y-auto bg-black/95 backdrop-blur-xl" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="min-h-screen px-4 py-8 md:py-12 flex items-center justify-center">
+            <div class="glass-neon rounded-3xl max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col border border-neon-purple/50 shadow-[0_0_50px_rgba(176,38,255,0.3)]">
+                <div class="p-6 md:p-8 border-b border-white/10 flex justify-between items-center">
+                    <h3 class="font-display text-2xl md:text-3xl font-black text-white tracking-wider">
+                        LEGAL <span class="text-neon-pink">TERMS</span>
+                    </h3>
+                    <button onclick="closeTermsModal()" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-neon-pink/20 transition-colors">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="p-6 md:p-8 overflow-y-auto space-y-6 text-sm md:text-base text-gray-300 custom-scrollbar">
+                    <div class="p-4 rounded-xl bg-neon-pink/10 border border-neon-pink/30">
+                        <p class="font-bold text-neon-pink mb-2">⚠️ IMPORTANT AGREEMENT</p>
+                        <p class="text-xs md:text-sm">By submitting music, you enter into a binding co-ownership agreement with UltimateAppsCA Studios.</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <h4 class="font-display font-bold text-neon-cyan text-lg tracking-wider">1. OWNERSHIP VERIFICATION</h4>
+                        <p class="text-xs md:text-sm leading-relaxed">You certify under penalty of perjury that you are the sole legal owner of all intellectual property rights, including copyright, master recording rights, and publishing rights for the submitted musical work(s). You warrant that the submission is original and free from any third-party claims.</p>
+                        
+                        <h4 class="font-display font-bold text-neon-cyan text-lg tracking-wider mt-6">2. CO-OWNERSHIP STRUCTURE</h4>
+                        <p class="text-xs md:text-sm leading-relaxed">Upon promotional acceptance, you hereby assign a 50% undivided interest in the musical work to UltimateAppsCA Studios ("Co-Owner"). This co-ownership is irrevocable and perpetual, surviving termination of promotional services.</p>
+                        
+                        <h4 class="font-display font-bold text-neon-cyan text-lg tracking-wider mt-6">3. GRANT OF COMMERCIAL RIGHTS</h4>
+                        <p class="text-xs md:text-sm leading-relaxed">As Co-Owner, UltimateAppsCA Studios retains exclusive, worldwide, royalty-bearing rights to:</p>
+                        <ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-gray-400 mt-2">
+                            <li>Manufacture, reproduce, and distribute physical/digital copies</li>
+                            <li>Create derivative works, remixes, and adaptations</li>
+                            <li>Sublicense synchronization rights for film, TV, gaming, advertising</li>
+                            <li>Public performance rights (streaming, broadcast, live venues)</li>
+                            <li>Monetization through all current and future platforms</li>
+                            <li>Collection and retention of 50% net profits from exploitation</li>
+                        </ul>
+                        
+                        <h4 class="font-display font-bold text-neon-cyan text-lg tracking-wider mt-6">4. REVENUE DISTRIBUTION</h4>
+                        <p class="text-xs md:text-sm leading-relaxed">Net profits (gross revenue minus distribution fees, marketing costs, and administrative expenses) shall be split equally (50/50) between Artist and UltimateAppsCA Studios. Payments issued quarterly with detailed accounting statements.</p>
+                        
+                        <h4 class="font-display font-bold text-neon-cyan text-lg tracking-wider mt-6">5. REPRESENTATIONS</h4>
+                        <p class="text-xs md:text-sm leading-relaxed">You represent full legal capacity to enter this agreement, indemnify UltimateAppsCA Studios against infringement claims, and acknowledge this constitutes a binding electronic signature under applicable law.</p>
+                    </div>
+                    
+                    <div class="p-4 rounded-xl bg-dark border border-white/10 mt-6">
+                        <p class="text-xs text-gray-500 text-center">Last Updated: March 2026 • Electronic Signature Binding Upon Form Submission</p>
+                    </div>
+                </div>
+                
+                <div class="p-6 border-t border-white/10 bg-white/5">
+                    <button onclick="closeTermsModal()" class="w-full py-4 rounded-xl bg-gradient-to-r from-neon-purple to-neon-pink text-white font-bold tracking-wider hover:shadow-[0_0_20px_rgba(176,38,255,0.5)] transition-all">
+                        I UNDERSTAND & AGREE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart Data - REPLACE WITH YOUR ACTUAL TRACKS
+        const chartData = [
+            { rank: 1, title: "NEON DREAMS", artist: "Cyber Punk", plays: "2.4M", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", art: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=400&h=400&fit=crop", hot: true },
+            { rank: 2, title: "ELECTRIC SOUL", artist: "The Voltage", plays: "1.9M", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", art: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400&h=400&fit=crop", hot: true },
+            { rank: 3, title: "MIDNIGHT VIBES", artist: "Luna Wave", plays: "1.7M", trend: "same", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=400&fit=crop", hot: true },
+            { rank: 4, title: "RETRO FUTURE", artist: "Analog Dreams", plays: "1.5M", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", art: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=400&h=400&fit=crop" },
+            { rank: 5, title: "DIGITAL LOVE", artist: "Pixel Hearts", plays: "1.3M", trend: "down", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop" },
+            { rank: 6, title: "SYNTH WAVE", artist: "Neon Rider", plays: "1.2M", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", art: "https://images.unsplash.com/photo-1507838153414-b4b713384ebd?w=400&h=400&fit=crop" },
+            { rank: 7, title: "STARLIGHT", artist: "Cosmic Dust", plays: "1.1M", trend: "same", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", art: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=400&h=400&fit=crop" },
+            { rank: 8, title: "URBAN JUNGLE", artist: "Metro Beats", plays: "980K", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", art: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&h=400&fit=crop" },
+            { rank: 9, title: "DEEP SPACE", artist: "Void Walker", plays: "920K", trend: "down", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=400&fit=crop" },
+            { rank: 10, title: "SUMMER HAZE", artist: "Heatwave", plays: "890K", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", art: "https://images.unsplash.com/photo-1496293455970-f8581aae0e3c?w=400&h=400&fit=crop" },
+            { rank: 11, title: "CONCRETE ROSE", artist: "City Flowers", plays: "850K", trend: "same", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3", art: "https://images.unsplash.com/photo-1485579149621-3123dd979885?w=400&h=400&fit=crop" },
+            { rank: 12, title: "SILENT ECHO", artist: "Ghost Notes", plays: "820K", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3", art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop" },
+            { rank: 13, title: "PHOENIX RISE", artist: "Ash & Ember", plays: "790K", trend: "down", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3", art: "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=400&h=400&fit=crop" },
+            { rank: 14, title: "CRYSTAL CLEAR", artist: "Prism", plays: "760K", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3", art: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=400&h=400&fit=crop" },
+            { rank: 15, title: "NIGHT DRIVE", artist: "Highway Runners", plays: "740K", trend: "same", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3", art: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400&h=400&fit=crop" },
+            { rank: 16, title: "VELVET SKY", artist: "Smooth Operators", plays: "710K", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3", art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=400&fit=crop" },
+            { rank: 17, title: "IRON WILL", artist: "Steel Hearts", plays: "690K", trend: "down", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", art: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&h=400&fit=crop" },
+            { rank: 18, title: "PAPER PLANES", artist: "Origami", plays: "670K", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", art: "https://images.unsplash.com/photo-1507838153414-b4b713384ebd?w=400&h=400&fit=crop" },
+            { rank: 19, title: "BLUE MOON", artist: "Lunar Tides", plays: "650K", trend: "same", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", art: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=400&h=400&fit=crop" },
+            { rank: 20, title: "FIREFLY", artist: "Light Keepers", plays: "630K", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", art: "https://images.unsplash.com/photo-1496293455970-f8581aae0e3c?w=400&h=400&fit=crop" },
+            { rank: 21, title: "THUNDERSTRUCK", artist: "Storm Chasers", plays: "610K", trend: "down", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=400&fit=crop" },
+            { rank: 22, title: "MORNING DEW", artist: "Fresh Start", plays: "590K", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", art: "https://images.unsplash.com/photo-1485579149621-3123dd979885?w=400&h=400&fit=crop" },
+            { rank: 23, title: "SOLAR FLARE", artist: "Sun Spots", plays: "570K", trend: "same", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", art: "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=400&h=400&fit=crop" },
+            { rank: 24, title: "GRAVITY", artist: "Pull Me Down", plays: "550K", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", art: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=400&h=400&fit=crop" },
+            { rank: 25, title: "WIND TALKER", artist: "Breeze", plays: "530K", trend: "down", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop" },
+            { rank: 26, title: "TIME WARP", artist: "Chronos", plays: "510K", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", art: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400&h=400&fit=crop" },
+            { rank: 27, title: "SILVER LINING", artist: "Optimist", plays: "490K", trend: "same", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3", art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=400&fit=crop" },
+            { rank: 28, title: "SHADOW BOX", artist: "Dark Matter", plays: "470K", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3", art: "https://images.unsplash.com/photo-1507838153414-b4b713384ebd?w=400&h=400&fit=crop" },
+            { rank: 29, title: "HEARTBEAT", artist: "Pulse", plays: "450K", trend: "down", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3", art: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=400&h=400&fit=crop" },
+            { rank: 30, title: "LAST CALL", artist: "Final Round", plays: "430K", trend: "up", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3", art: "https://images.unsplash.com/photo-1496293455970-f8581aae0e3c?w=400&h=400&fit=crop" }
+        ];
+
+        let currentTrackIndex = -1;
+        let isPlaying = false;
+        const audio = document.getElementById('audioPlayer');
+
+        // Render Chart
+        function renderChart() {
+            const container = document.getElementById('chartList');
+            container.innerHTML = chartData.map((track, index) => `
+                <div class="glass-neon rounded-xl p-3 md:p-4 flash-card cursor-pointer group touch-target border ${index < 3 ? 'border-neon-yellow/50 shadow-[0_0_20px_rgba(255,234,0,0.2)]' : 'border-white/5'} ${currentTrackIndex === index ? 'ring-2 ring-neon-cyan shadow-[0_0_30px_rgba(0,245,255,0.3)]' : ''}" 
+                     onclick="playTrack(${index})">
+                    <div class="flex items-center gap-3 md:gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center font-display font-black text-lg md:text-xl ${index < 3 ? 'text-neon-yellow neon-text' : 'text-gray-500'}">
+                            ${track.rank}
+                        </div>
+                        <div class="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-lg overflow-hidden relative border-2 ${index < 3 ? 'border-neon-yellow' : 'border-white/10'}">
+                            <img src="${track.art}" alt="${track.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            ${track.hot ? '<div class="absolute top-0 right-0 w-6 h-6 bg-neon-pink flex items-center justify-center"><svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path></svg></div>' : ''}
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex-1 min-w-0 text-left">
+                            <h3 class="font-display font-bold text-sm md:text-base text-white truncate group-hover:text-neon-cyan transition-colors tracking-wide uppercase">${track.title}</h3>
+                            <p class="text-xs md:text-sm text-neon-pink font-bold truncate tracking-wider">${track.artist}</p>
+                        </div>
+                        <div class="hidden sm:flex flex-col items-end gap-1">
+                            <span class="text-xs font-bold text-gray-400 tracking-wider">${track.plays}</span>
+                            <span class="text-lg ${track.trend === 'up' ? 'text-neon-lime' : track.trend === 'down' ? 'text-neon-pink' : 'text-gray-500'}">
+                                ${track.trend === 'up' ? '↗' : track.trend === 'down' ? '↘' : '→'}
+                            </span>
+                        </div>
+                        <button class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-neon-purple to-neon-pink flex items-center justify-center shadow-[0_0_15px_rgba(176,38,255,0.4)] flex-shrink-0 transform group-hover:scale-110 transition-transform">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Audio Functions
+        function playTrack(index) {
+            if (currentTrackIndex === index && isPlaying) {
+                togglePlay();
+                return;
+            }
+            
+            currentTrackIndex = index;
+            const track = chartData[index];
+            
+            audio.src = track.url;
+            document.getElementById('trackTitle').textContent = track.title;
+            document.getElementById('trackArtist').textContent = track.artist;
+            document.getElementById('playerArt').src = track.art;
+            document.getElementById('currentRank').textContent = track.rank;
+            
+            audio.play();
+            isPlaying = true;
+            updatePlayButton();
+            document.getElementById('visualizer').classList.remove('opacity-0');
+            
+            // Scroll to player on mobile
+            if (window.innerWidth < 768) {
+                document.getElementById('player').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
+            renderChart();
+        }
+
+        function togglePlay() {
+            if (currentTrackIndex === -1) {
+                playTrack(0);
+                return;
+            }
+            
+            if (isPlaying) {
+                audio.pause();
+                document.getElementById('visualizer').classList.add('opacity-0');
+            } else {
+                audio.play();
+                document.getElementById('visualizer').classList.remove('opacity-0');
+            }
+            isPlaying = !isPlaying;
+            updatePlayButton();
+        }
+
+        function updatePlayButton() {
+            const playIcon = document.getElementById('playIcon');
+            const pauseIcon = document.getElementById('pauseIcon');
+            if (isPlaying) {
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+            } else {
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+            }
+        }
+
+        function previousTrack() {
+            if (currentTrackIndex > 0) playTrack(currentTrackIndex - 1);
+            else playTrack(chartData.length - 1);
+        }
+
+        function nextTrack() {
+            if (currentTrackIndex < chartData.length - 1) playTrack(currentTrackIndex + 1);
+            else playTrack(0);
+        }
+
+        function setVolume(value) {
+            audio.volume = value / 100;
+        }
+
+        // Progress
+        audio.addEventListener('timeupdate', () => {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('currentTime').textContent = formatTime(audio.currentTime);
+            document.getElementById('duration').textContent = formatTime(audio.duration || 0);
+        });
+
+        audio.addEventListener('ended', nextTrack);
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        document.getElementById('progressBar').addEventListener('click', (e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const pos = (e.clientX - rect.left) / rect.width;
+            audio.currentTime = pos * audio.duration;
+        });
+
+        // Form
+        function validateForm(e) {
+            const checkbox = document.querySelector('input[name="terms"]');
+            if (!checkbox.checked) {
+                e.preventDefault();
+                alert('Please accept the Terms of Service to proceed.');
+                return false;
+            }
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = '<svg class="animate-spin w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> PROCESSING...';
+            btn.disabled = true;
+            return true;
+        }
+
+        // Modal
+        function openTermsModal() {
+            document.getElementById('termsModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTermsModal() {
+            document.getElementById('termsModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            renderChart();
+            
+            // Intersection Observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-slide-up');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.flash-card').forEach(el => observer.observe(el));
+        });
+
+        // Close modal on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeTermsModal();
+        });
+    </script>
+</body>
+</html>
             touch-action: manipulation;
         }
         
